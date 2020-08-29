@@ -8,7 +8,7 @@
   	一般情况下。可以写两种值，一种是对应类的全类名
   	一种情况是。对应类的处理接口全类名（后面讲）。
    -->
-<mapper namespace="com.atguigu.mybatis.bean.User">
+<mapper namespace="com.atguigu.mybaits.mapper.UserMapper">
 	<!-- 
 		select 标签用于定义一个select查询语句
 		
@@ -18,11 +18,26 @@
 		parameterType 属性定义参数的类型，int 表示基本的Integer类型
 		resultType 属性定义返回值的数据类型
 	 -->
-	 <!-- 根据id 查询 用户的信息 -->
-	<select id="selectUserById" parameterType="int" resultType="com.atguigu.mybatis.bean.User">
-		select id, last_name lastName, sex from t_user where id = #{value}
+
+	<insert id="saveUser" useGeneratedKeys="true" keyProperty="id">
+		insert into t_user (last_name,sex) values (#{lastName},#{sex});
+	</insert>
+	<delete id="deleteUserById">
+		delete from t_user where id = #{id}
+	</delete>
+
+	<update id="updateUser">
+		update t_user set last_name = #{lastName} , sex = #{sex} where id = #{id}
+	</update>
+
+	<select id="findUserById" resultType="com.atguigu.mybaits.bean.User">
+		select id ,last_name lastName , sex from t_user where id = #{id}
 	</select>
-	
+
+	<select id="findUsers" resultType="com.atguigu.mybaits.bean.User">
+		select id ,last_name lastName , sex from t_user
+	</select>
+
 
 </mapper>
 
