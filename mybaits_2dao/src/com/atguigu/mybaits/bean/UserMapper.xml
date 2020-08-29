@@ -24,7 +24,6 @@
 		insert into t_user (last_name,sex) values (#{lastName},#{sex})
 	</insert>
 
-
 	<delete id="deleteUserById">
 		delete from t_user where id = #{id}
 	</delete>
@@ -42,9 +41,6 @@
 	</select>
 
 
-
-
-
 	<!--
 	useGeneratedKeys 表示返回生成的主键
 	keyProperty 表示把返回的key注入到返回值的哪个属性中
@@ -55,9 +51,9 @@
 	</insert>
 
 	<!--
-useGeneratedKeys
+	useGeneratedKeys
 
--->
+	-->
 	<insert id="insertUser2" parameterType="com.atguigu.mybaits.bean.User" useGeneratedKeys="true" >
 		<selectKey keyProperty="id" resultType="int" order="AFTER">
 			SELECT LAST_INSERT_ID()
