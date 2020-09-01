@@ -135,14 +135,14 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 
 		<!-- 	2、使用mapper接口的形式导入配置,同一个 AuthorMapper AuthorMapper.xml同一个目录下
 				使用mapper接口类导入配置文件 -->
-		<mapper resource="com.atguigu.mybaits.bean.UserMapper" />
+		<mapper class="com.atguigu.mybaits.bean.UserMapper" />
 
 
 		<!-- 3 使用包扫描的方式引入配置文件
 			扫描包下所有的配置文件
 			a、接口名和Mapper配置文件名必须相同
 			b、接口文件和Mapper配置文件必须在同一个包下 -->
-		<mapper resource="com.atguigu.mybaits.bean" />
+		<package name="com.atguigu.mybaits.bean" />
 
 	</mappers>
 </configuration>

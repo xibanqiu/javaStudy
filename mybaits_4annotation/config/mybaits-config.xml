@@ -100,7 +100,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 			扫描包下所有的配置文件
 			a、接口名和Mapper配置文件名必须相同
 			b、接口文件和Mapper配置文件必须在同一个包下 -->
-		<mapper resource="com.atguigu.mapper" />
+		<mapper class="com.atguigu.mapper.UserMapper"/>
 
 	</mappers>
 </configuration>
