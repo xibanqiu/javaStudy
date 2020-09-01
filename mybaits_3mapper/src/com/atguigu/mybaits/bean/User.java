@@ -1,5 +1,8 @@
 package com.atguigu.mybaits.bean;
 
+import org.apache.ibatis.type.Alias;
+
+@Alias("user2")
 public class User {
 
     private Integer id;

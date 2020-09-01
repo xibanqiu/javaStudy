@@ -3,6 +3,48 @@
 PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+
+	<!--	标签顺序  properties 、settings ...   -->
+
+	<!-- properties 配置一些属性。使用的时候，用${name} 进行输出
+                resource指定属性的位置
+         -->
+	<properties resource="jdbc.properties">
+
+		<!-- 也可以在properties配置中定义一些属性。当然并不推荐 -->
+		<property name="driverClass" value="driverClass"/>
+		<property name="url" value="url"/>
+		<property name="username" value="root"/>
+		<property name="password" value="root"/>
+
+	</properties>
+
+	<!--	开启驼峰 的 自动转换-->
+	<settings>
+		<setting name="mapUnderscoreToCameICase" value="true"/>
+	</settings>
+
+	<!--	别名 设置
+		type 具体类型
+		alias 别名
+	-->
+	<typeAliases>
+<!--		<typeAlias type="com.atguigu.mybaits.bean.User" alias="user" />-->
+
+	<!--		package标签设置通过包名来扫描 ，所有的类 。自动的配置上别名
+	   			默认的别名是类名 ，而且首字母小写
+
+	   			如 下面 bean 下边的有 User  的实体类。别名为 user
+	   -->
+		<package name="com.atguigu.mybaits.bean" />
+	</typeAliases>
+
+
+	<typeHandlers>
+		<typeHandler handler="B"></typeHandler>
+
+	</typeHandlers>
+
 	<!-- environments 是配置多个jdbc环境 
 		default表示使用的默认环境 
 	 -->
@@ -24,20 +66,84 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 					type="UNPOOLED"	表示不启用数据库连接池
 			 -->
 			<dataSource type="POOLED">
-				<!-- 连接数据库的驱动类 -->
-				<property name="driver" value="com.mysql.jdbc.Driver" />
-				<!-- 数据库访问地址 -->
-				<property name="url" value="jdbc:mysql://localhost:3306/site-test?useSSL=false" />
-				<!-- 数据库用户名 -->
-				<property name="username" value="root" />
-				<!-- 数据库密码 -->
-				<property name="password" value="root" />
+				<!-- 配置数据库连接信息 -->
+				<property name="driver" value="${driverClass}" />
+				<property name="url" value="${url}" />
+				<property name="username" value="${username}" />
+				<property name="password" value="${password}" />
 			</dataSource>
 		</environment>
+
+
+		<environment id="test">
+			<!--
+                transactionManager	配置使用什么样类型的数据库事务管理
+                     type="JDBC"  	表示启用事务，有commit和rollback操作
+                     type="MANAGED" 表示不直接控制事务。交给容器处理-几乎不用。
+             -->
+			<transactionManager type="JDBC" />
+			<!--
+                dataSource标签配置连接池
+                    type="POOLED"	表示启用数据库连接池
+                    type="UNPOOLED"	表示不启用数据库连接池
+             -->
+			<dataSource type="POOLED">
+				<!-- 配置数据库连接信息 -->
+				<property name="driver" value="${driverClass}" />
+				<property name="url" value="${url}" />
+				<property name="username" value="${username}" />
+				<property name="password" value="${password}" />
+			</dataSource>
+		</environment>
+
+		<environment id="product">
+			<!--
+                transactionManager	配置使用什么样类型的数据库事务管理
+                     type="JDBC"  	表示启用事务，有commit和rollback操作
+                     type="MANAGED" 表示不直接控制事务。交给容器处理-几乎不用。
+             -->
+			<transactionManager type="JDBC" />
+			<!--
+                dataSource标签配置连接池
+                    type="POOLED"	表示启用数据库连接池
+                    type="UNPOOLED"	表示不启用数据库连接池
+             -->
+			<dataSource type="POOLED">
+				<!-- 配置数据库连接信息 -->
+				<property name="driver" value="${driverClass}" />
+				<property name="url" value="${url}" />
+				<property name="username" value="${username}" />
+				<property name="password" value="${password}" />
+			</dataSource>
+		</environment>
+
 	</environments>
+
+	<databaseIdProvider type="DB_VENDOR">
+
+			<property name="SQL Server" value="sqlserver"/>
+			<property name="MySQL" value="mysql"/>
+			<property name="DB2" value="db2"/>
+			<property name="Oracle" value="oracle"/>
+
+	</databaseIdProvider>
+
 	<mappers>
-		<!-- 导入mapper配置文件 -->
+		<!-- 	1、在classpath路径下引入
+			从classpath路径下导入指定的配置文件 -->
 		<mapper resource="com/atguigu/mybaits/bean/UserMapper.xml" />
+
+		<!-- 	2、使用mapper接口的形式导入配置,同一个 AuthorMapper AuthorMapper.xml同一个目录下
+				使用mapper接口类导入配置文件 -->
+		<mapper resource="com.atguigu.mybaits.bean.UserMapper" />
+
+
+		<!-- 3 使用包扫描的方式引入配置文件
+			扫描包下所有的配置文件
+			a、接口名和Mapper配置文件名必须相同
+			b、接口文件和Mapper配置文件必须在同一个包下 -->
+		<mapper resource="com.atguigu.mybaits.bean" />
+
 	</mappers>
 </configuration>
 
