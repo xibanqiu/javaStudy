@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+    namespace属性是名称空间的意思。
+    功能相当于 给配置文件定义一个包名。
+    一般情况下。可以写两种值，一种是对应类的全类名
+    一种情况是。对应类的处理接口全类名（后面讲）。
+ -->
+<mapper namespace="com.atguigu.mapper.KeyMapper">
+
+    <!--
+		resultMap标签专门用来定义自定义的结果集数据。
+			type属性设置返回的数据类型
+			id属性定义一个唯一标识
+	 -->
+    <resultMap type="com.atguigu.bean.Key" id="queryKeyForSimple_resultMap">
+        <!-- id定义主键列 -->
+        <id column="id" property="id"/>
+        <!-- result 定义一个列和属性的映射 -->
+        <result column="name" property="name"/>
+        <!-- lock.id 和  lock.name 叫级联属性映射 -->
+        <result column="lock_id" property="lock.id"/>
+        <result column="lock_name" property="lock.name"/>
+    </resultMap>
+    <!--
+        select 标签用于定义一个select语句
+            id属性设置一个statement标识
+            parameterType设置参数的类型
+            resultMap 设置返回的结果类型
+     -->
+    <select id="queryKeyForSimple" parameterType="int" resultMap="queryKeyForSimple_resultMap">
+		select t_key.*,t_lock.name lock_name
+			from
+		t_key left join t_lock
+			on
+		t_key.lock_id = t_lock.id
+			where
+		t_key.id = #{id}
+	</select>
+
+
+</mapper>
+
+
