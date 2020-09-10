@@ -4,6 +4,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 
+
 	<!--	标签顺序  properties 、settings ...   -->
 
 	<!-- properties 配置一些属性。使用的时候，用${name} 进行输出
@@ -18,6 +19,16 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<property name="password" value="root"/>
 
 	</properties>
+
+	<!-- 配置全局mybatis的配置 -->
+	<settings>
+		<!-- 启用驼峰标识 -->
+<!--		<setting name="mapUnderscoreToCamelCase" value="true" />-->
+		<!-- 打开延迟加载的开关 -->
+		<setting name="lazyLoadingEnabled" value="true" />
+		<!-- 将积极加载改为消息加载即按需加载 -->
+		<setting name="aggressiveLazyLoading" value="false" />
+	</settings>
 
 	<!-- environments 是配置多个jdbc环境
 		default表示使用的默认环境 

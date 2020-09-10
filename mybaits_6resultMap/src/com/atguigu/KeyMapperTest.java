@@ -2,6 +2,7 @@ package com.atguigu;
 
 import com.atguigu.bean.Key;
 import com.atguigu.mapper.KeyMapper;
+import com.atguigu.mapper.LockMapper;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -39,8 +40,28 @@ public class KeyMapperTest {
         }finally {
             sqlSession.close();
         }
+    }
 
+    @Test
+    public void testQueryKeyByTwoStep() {
+        SqlSession session = sqlSessionFactory.openSession();
+        try {
+            KeyMapper keyMapper = session.getMapper( KeyMapper.class );
+            System.out.println( keyMapper.queryKeyByTwoStep(1) );
+        } finally {
+            session.close();
+        }
+    }
 
+    @Test
+    public void testQueryLockById(){
+        SqlSession session = sqlSessionFactory.openSession();
+        try {
+            LockMapper lockMapper = session.getMapper(LockMapper.class);
+            System.out.println( lockMapper.queryLockById(1) );
+        } finally {
+            session.close();
+        }
     }
 
 

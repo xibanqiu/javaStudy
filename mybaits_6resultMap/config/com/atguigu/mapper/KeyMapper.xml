@@ -40,6 +40,29 @@
 		t_key.id = #{id}
 	</select>
 
+    <!-- 	resultMap 标签定义复杂对象的结果集数据  -->
+    <resultMap type="com.atguigu.bean.Key" id="queryKeyByTwoStep_resultMap">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <!--
+            association标签定义一个子对象的集合集
+                property 属性映射子对象的名称
+                select 属性定义执行的查询语句
+                也就是说。property指定的lock子对象，是通过执行。select标识的查询语句返回
+                column 属性定义需要传递给select语句的参数
+         -->
+        <association property="lock" select="com.atguigu.mapper.LockMapper.queryLockById" column="lock_id" />
+    </resultMap>
+
+    <!--
+    定义分步查询的select
+ -->
+    <select id="queryKeyByTwoStep" parameterType="int" resultMap="queryKeyByTwoStep_resultMap">
+		select id,name,lock_id from t_key where id = #{value}
+	</select>
+
+
+
 
 </mapper>
 
