@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+    namespace属性是名称空间的意思。
+    功能相当于 给配置文件定义一个包名。
+    一般情况下。可以写两种值，一种是对应类的全类名
+    一种情况是。对应类的处理接口全类名（后面讲）。
+ -->
+<mapper namespace="com.atguigu.mapper.StudentMapper">
+    <!--
+        resultMap可以定义一个自定义的结果集返回
+     -->
+
+    <!-- 根据班级id查询学生信息 -->
+    <select id="queryStudentsByClazzId" parameterType="int" resultType="com.atguigu.bean.Student">
+		select id,name from t_student where clazz_id = #{value}
+    </select>
+
+</mapper>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+    namespace属性是名称空间的意思。
+    功能相当于 给配置文件定义一个包名。
+    一般情况下。可以写两种值，一种是对应类的全类名
+    一种情况是。对应类的处理接口全类名（后面讲）。
+ -->
+<mapper namespace="com.atguigu.mapper.ClazzMapper">
+    <!--
+        resultMap可以定义一个自定义的结果集返回
+     -->
+    <resultMap type="com.atguigu.bean.Clazz" id="queryClazzByIdForSimple_resultMap">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <!--
+            collection定义一个子集合对象返回
+         -->
+        <collection property="stus" ofType="com.atguigu.bean.Student">
+            <id column="student_id" property="id"/>
+            <result column="student_name" property="name"/>
+        </collection>
+    </resultMap>
+    <!-- 定义一个立即加载的查询Clazz对象 -->
+    <select id="queryClazzByIdForSimple" parameterType="int" resultMap="queryClazzByIdForSimple_resultMap">
+        select t_clazz.* , t_student.id student_id,t_student.name student_name
+        from
+        t_clazz left join t_student
+        on
+        t_clazz.id = t_student.clazz_id
+        where
+        t_clazz.id = #{id}
+    </select>
+
+    <!-- 创建一个自定义集合集 -->
+    <resultMap type="com.atguigu.bean.Clazz" id="queryClazzByIdForLazy_resultMap">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <collection property="stus" ofType="com.atguigu.bean.Student"
+                    select="com.atguigu.mapper.StudentMapper.queryStudentsByClazzId" column="id" />
+    </resultMap>
+
+    <!-- 创建一个懒加载Clazz对象的查询 -->
+    <select id="queryClazzByIdForLazy" parameterType="int" resultMap="queryClazzByIdForLazy_resultMap">
+		select id,name from t_clazz where id = #{value}
+	</select>
+
+
+</mapper>
