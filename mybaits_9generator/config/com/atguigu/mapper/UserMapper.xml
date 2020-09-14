@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <!-- 
+  	namespace属性是名称空间的意思。
+  	功能相当于 给配置文件定义一个包名。
+  	一般情况下。可以写两种值，一种是对应类的全类名
+  	一种情况是。对应类的处理接口全类名（后面讲）。
+   -->
+<mapper namespace="com.atguigu.mapper.UserMapper">
+
+
+
+	<cache
+			eviction="FIFO"
+			flushInterval="60000"
+			size="512"
+			readOnly="true"/>
+
+	<!-- 	public User queryUserById(Integer id);	 -->
+	<select id="queryUserById" resultType="com.atguigu.bean.User" useCache="true">
+		select id,last_name lastName,sex from t_user where id = #{id}
+
+
+	</select>
+
+	<insert id="insertUser" useGeneratedKeys="true" keyProperty="id" flushCache="false">
+
+		insert into t_user (`last_name`,`sex` ) values (#{lastName},#{sex})
+	</insert>
+
+
+
+</mapper>
+
+
