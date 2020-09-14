@@ -64,15 +64,19 @@ public class UserMapperTest {
 
     public void queryOne(){
         SqlSession sqlSession = sqlSessionFactory.openSession();
+        try {
 
-        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
-        User user = mapper.queryUserById(1);
+            UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+            User user = mapper.queryUserById(1);
 
-        System.out.println(user);
+            System.out.println(user);
+        }finally {
+            sqlSession.close();
+        }
 
     }
 
-    //第二种 失败的情况 执行的
+    //第二种 失败的情况 执行的,执行的参数不同
     @Test
     public void testCacheFail2(){
         SqlSession sqlSession = sqlSessionFactory.openSession();
@@ -86,8 +90,47 @@ public class UserMapperTest {
 
     }
 
+    //第三种 失败的情况 在两条相同的查询语句中添加了  增、删、改 操作
+    @Test
+    public  void testCasheFail3(){
+        SqlSession sqlSession = sqlSessionFactory.openSession();
 
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+        try {
 
+            System.out.println(mapper.queryUserById(1));
+            int hhh = mapper.insertUser(new User(null, "hhh", 0));
+            sqlSession.commit();
+            System.out.println(mapper.queryUserById(1));
+        }finally {
+            sqlSession.close();
+        }
+
+    }
+
+    @Test
+    public void testCasheFail4(){
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+
+        try {
+            UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+            System.out.println(mapper.queryUserById(1));
+            sqlSession.clearCache();
+            System.out.println(mapper.queryUserById(1));
+
+        }finally {
+            sqlSession.close();
+        }
+
+    }
+
+    @Test
+    public void testSecondCache() throws IOException {
+        queryOne();
+        queryOne();
+        queryOne();
+        queryOne();
+    }
 
 
 }

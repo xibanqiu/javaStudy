@@ -28,6 +28,9 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<setting name="lazyLoadingEnabled" value="true" />
 		<!-- 将积极加载改为消息加载即按需加载 -->
 		<setting name="aggressiveLazyLoading" value="false" />
+
+		<setting name="cacheEnabled" value="true"/>
+		
 	</settings>
 
 	<!-- environments 是配置多个jdbc环境
