@@ -2,8 +2,14 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:p="http://www.springframework.org/schema/p"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:util="http://www.springframework.org/schema/util"
 
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/util
+       http://www.springframework.org/schema/util/spring-util-4.0.xsd">
+
+    <!-- 外部引用 Car 类 -->
     <bean id="car" class="com.atguigu.bean.Car">
         <property name="carNo" value="1"></property>
         <property name="name" value="aa" />
@@ -12,7 +18,170 @@
     <bean id="p8" class="com.atguigu.bean.Person">
         <property name="id" value="1"/>
         <property name="name" value="a"/>
+        <!-- ref属性通过设置id值，将指定的bean对象赋值给属性-->
         <property name="car" ref="car"/>
     </bean>
+
+    <!-- 内部引用 Car 类 -->
+    <bean id="p9" class="com.atguigu.bean.Person">
+
+        <property name="id" value="2"/>
+        <property name="name" value="b"/>
+        <property name="car" >
+            <bean id="car02" class="com.atguigu.bean.Car">
+                <property name="name" value="car2"/>
+                <property name="carNo" value="1"/>
+            </bean>
+        </property>
+    </bean>
+
+    <!-- list 属性赋值 -->
+    <bean id="p10" class="com.atguigu.bean.Person">
+        <property name="id" value="1"/>
+        <property name="name" value="c"/>
+        <property name="list" >
+            <list>
+                <value> item1</value>
+                <value> item2</value>
+                <value> item3</value>
+                <bean id="car3" class="com.atguigu.bean.Car">
+                    <property name="carNo" value="3"/>
+                    <property name="name" value="car03" />
+                </bean>
+            </list>
+        </property>
+    </bean>
+
+    <!-- map 属性配置 -->
+    <bean id="p11" class="com.atguigu.bean.Person">
+        <property name="id" value="1"></property>
+        <property name="map" >
+            <map>
+                <entry key="key1" value="value1"/>
+                <entry key="key2" value-ref="car"/>
+            </map>
+        </property>
+    </bean>
+
+    <!-- props 标签标示配置Properties 类型给属性赋值 -->
+    <bean id="p12" class="com.atguigu.bean.Person" >
+        <property name="id" value="12"/>
+        <property name="props" >
+            <props>
+                <prop key="user"> root</prop>
+                <prop key="password"> root</prop>
+            </props>
+        </property>
+    </bean>
+
+    <!-- set -->
+    <bean id="pset" class="com.atguigu.bean.Person">
+        <property name="id" value="100" />
+        <property name="set">
+            <!--
+                set标签配置一个Set集合赋值给属性
+             -->
+            <set>
+                <!-- value 表示集合中一个字符串值 -->
+                <value>value1</value>
+                <value>value2</value>
+                <!-- ref 表示引用一个bean对象 -->
+                <ref bean="car"/>
+            </set>
+        </property>
+    </bean>
+
+    <!-- util 名称空间 -->
+    <util:list id="list01">
+        <value > list01</value>
+        <value >car</value>
+        <ref bean="car"></ref>
+    </util:list>
+
+    <bean id="p14" class="com.atguigu.bean.Person">
+        <property name="id" value="1" ></property>
+        <property name="list" ref="list01"/>
+    </bean>
+
+    <!-- 给bean的级联属性赋值 -->
+    <bean id="car1" class="com.atguigu.bean.Car">
+        <property name="carNo" value="京B531212" />
+        <property name="name" value="冰利"/>
+    </bean>
+
+    <bean id="p15" class="com.atguigu.bean.Person">
+        <property name="id" value="14" />
+        <property name="car" ref="car1" />
+        <!-- spring中可以使用级联属性方式赋值，但，赋值前这个子对象一定要先有值 -->
+        <property name="car.carNo" value="京A123412"/>
+    </bean>
+
+    <!--
+		配置调用静态工厂方法创建Bean对象
+			class 配置工厂类的全类名
+			factory-method 调用工厂类的哪个方法
+	 -->
+    <bean id="p16" class="com.atguigu.factory.PersonFactory" factory-method="createPerson" />
+
+    <!--
+    配置调用 实例化 工厂方法创建Bean对象
+    1、在spring容器中创建一个bean对象
+             2、配置调用工厂实例的方法
+         -->
+
+    <bean id="personFactory" class="com.atguigu.factory.PersonFactory"/>
+    <!--
+        class属性和factory-method组合是静态工厂方法
+        factory-bean 和 factory-method 组合是工厂实例方法
+
+
+        factory-bean 使用哪个bean对象做为工厂实例
+        factory-method 调用工厂类实例的哪个方法
+     -->
+    <bean id="p17" factory-bean="personFactory" factory-method="createPerson2"/>
+
+    <!--
+		如果指定的Class是实现了Spring的FactoryBean接口，
+			Spring容器本身会自动的判断，如果有实现这个FactoryBean接口，
+			创建对象的时候，就会调用 getObject()返回对象
+	 -->
+    <bean id="p18" class="com.atguigu.factory.PersonFacotryBean"></bean>
+
+
+    <!--通过继承实现bean配置信息的重用-->
+    <bean id="parent" class="com.atguigu.bean.Person">
+        <property name="id" value="100" />
+        <property name="name" value="我是父亲" />
+        <property name="list">
+            <list>
+                <value>list1</value>
+                <value>list2</value>
+                <value>list3</value>
+            </list>
+        </property>
+    </bean>
+    <bean id="p19" parent="parent">
+        <property name="name" value="我是子" />
+    </bean>
+
+
+    <!--
+	abstract="true"表示这个bean，不能被实例化，而只能被继承使用
+	 -->
+    <bean id="parent2" class="com.atguigu.bean.Person" abstract="true">
+        <property name="id" value="100" />
+        <property name="name" value="我是父亲abstract" />
+        <property name="list">
+            <list>
+                <value>list1</value>
+                <value>list2</value>
+                <value>list3</value>
+            </list>
+        </property>
+    </bean>
+    <bean id="p20" parent="parent">
+        <property name="name" value="我是abstract子" />
+    </bean>
+
 
 </beans>
