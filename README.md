@@ -1,5 +1,4 @@
 # javaStudy
 java study note
 
-
-mybatis  一直笔误写成 mybaits  见谅
+I'm so sorry that mybatis  always written by mistake mybaits .

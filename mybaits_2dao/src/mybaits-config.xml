@@ -27,12 +27,12 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 				<!-- 连接数据库的驱动类 -->
 				<property name="driver" value="com.mysql.jdbc.Driver" />
 				<!-- 数据库访问地址 -->
-				<property name="url" value="jdbc:mysql:/localhost:3306/site-test?useSSL=false" />
+				<property name="url" value="jdbc:mysql://localhost:3306/site-test?useSSL=false" />
 				<!-- 数据库用户名 -->
 				<property name="username" value="root" />
 				<!-- 数据库密码 -->
 				<property name="password" value="root" />
-			</dataSource>
+			</dataSource>s
 		</environment>
 	</environments>
 	<mappers>
