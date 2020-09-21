@@ -12,11 +12,8 @@
 
 
 
-	<cache
-			eviction="FIFO"
-			flushInterval="60000"
-			size="512"
-			readOnly="true"/>
+	<cache>
+	</cache>
 
 	<!-- 	public User queryUserById(Integer id);	 -->
 	<select id="queryUserById" resultType="com.atguigu.bean.User" useCache="true">
