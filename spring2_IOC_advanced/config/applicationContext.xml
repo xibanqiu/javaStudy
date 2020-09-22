@@ -179,9 +179,27 @@
             </list>
         </property>
     </bean>
+
+    <!-- depends-on  依赖 -->
     <bean id="p20" parent="parent">
         <property name="name" value="我是abstract子" />
     </bean>
+
+    <bean id="c" class="com.atguigu.bean.C" />
+    <bean id="b" class="com.atguigu.bean.B" />
+    <bean id="a" class="com.atguigu.bean.A" depends-on="b,c"/>
+
+    <!-- 基于xml配置文件的自动注入 -->
+    <bean id="car1"  class="com.atguigu.bean.Car">
+        <property name="name" value="京B1111" />
+        <property name="carNo" value="bw1" />
+    </bean>
+
+    <bean id="car2"  class="com.atguigu.bean.Car">
+        <property name="name" value="京B2222" />
+        <property name="carNo" value="bw2" />
+    </bean>
+
 
 
 </beans>

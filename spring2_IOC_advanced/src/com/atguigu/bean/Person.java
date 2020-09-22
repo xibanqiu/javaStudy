@@ -43,6 +43,10 @@ public class Person {
     public Person() {
     }
 
+    public Person(Car car) {
+        this.car = car;
+    }
+
     public Person(Integer id, String name, Car car) {
         this.id = id;
         this.name = name;

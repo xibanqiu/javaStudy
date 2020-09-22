@@ -1,12 +1,12 @@
 package com.atguigu.test;
 
+
 import com.atguigu.bean.Person;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-public class PersonTest {
-
+public class Persontest {
 
     @Test
     public void test1(){

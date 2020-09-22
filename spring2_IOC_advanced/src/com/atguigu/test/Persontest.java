@@ -99,4 +99,12 @@ public class Persontest {
 
     }
 
+    @Test
+    public void test21(){
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+    }
+
+
+
+
 }

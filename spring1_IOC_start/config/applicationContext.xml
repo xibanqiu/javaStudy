@@ -31,7 +31,7 @@
               该标签是自己通过构造器 赋值 ：name 设置构造器的参数名,value 设置 构造器 对应的参数值
        -->
     <bean id="p3" class="com.atguigu.bean.Person">
-    <!-- 	Person(Integer id, String name, String phone, Integer age)  -->
+        <!-- 	Person(Integer id, String name, String phone, Integer age)  -->
         <constructor-arg name="id" value="1"/>
         <constructor-arg name="name" value="aaa"/>
         <constructor-arg name="phone" value="123456789"/>
