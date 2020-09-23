@@ -11,6 +11,7 @@ public class MyBeanPostProcessor implements BeanPostProcessor {
 
         System.out.println("初始化方法之后。正在初始化的对象bean->" + bean + ",正在初始化对象的id值->" + id);
 
+        System.out.println("id = "+ id);
         if("p1".equals(id)){
             Person person = (Person) bean;
             person.setName("这是我给的值");
@@ -21,6 +22,7 @@ public class MyBeanPostProcessor implements BeanPostProcessor {
 
     @Override
     public Object postProcessAfterInitialization(Object bean, String id) throws BeansException {
+        System.out.println("id = "+ id);
         System.out.println("初始化方法之前。正在初始化的对象bean->" + bean + ",正在初始化对象的id值->" + id);
         return bean;
     }
