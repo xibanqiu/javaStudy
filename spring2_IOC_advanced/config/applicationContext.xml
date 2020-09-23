@@ -190,16 +190,68 @@
     <bean id="a" class="com.atguigu.bean.A" depends-on="b,c"/>
 
     <!-- 基于xml配置文件的自动注入 -->
-    <bean id="car1"  class="com.atguigu.bean.Car">
-        <property name="name" value="京B1111" />
-        <property name="carNo" value="bw1" />
+
+    <!--
+      autowire 属性设置是否自动查找bean对象并给子对象赋值
+
+            default 和 no 表示不自动查找并注入（你不赋值，它就null）
+            byName 	是指通过属性名做为id来查找bean对象，并注入
+                        1、找到就注入
+                        2、找不到就为null
+            byType  是指按属性的类型进行查找并注入
+                        1、找到一个就注入
+                        2、找到多个就报错
+                        3、没有找到就为null
+            constructor 是指按构造器参数进行查找并注入。
+                        1、先按照构造器参数类型进行查找并注入
+                        2、如果按类型查找到多个，接着按参数名做为id继续查找并注入。
+                        3、按id查找不到，就不赋值。-->
+    <bean id="p21" class="com.atguigu.bean.Person" autowire="constructor">
+        <property name="name" value="p21" />
     </bean>
 
-    <bean id="car2"  class="com.atguigu.bean.Car">
-        <property name="name" value="京B2222" />
-        <property name="carNo" value="bw2" />
+
+    <!--
+
+    Scope 属性设置对象的域
+                singleton      表示单例（默认）
+                                1、Spring 容器创建的时候就会常见Bean对象
+                                2、每次调用的getBean 都返回spring 容器的唯一一个对象
+
+                prototype       表示多例
+                                1、多例在Spring 容器别创建的时候不会跟着一起被创建
+                                2、每次调用getBean 都会创建一个新对象返回
+
+                request				在一次请求中，多次调用getBean方法都是返回同一个实例。
+
+								getBean("p20"); 底层大概的实现原理
+
+								Object bean = request.getAttribute("p20");
+								if (bean == null) {
+									bean = new 对象();
+									request.setAttribute("p20",bean);
+								}
+								return bean;
+
+
+			    session				在一个会话中，多次调用getBean方法都是返回同一个实例。
+
+								getBean("p20"); 底层大概的实现原理
+
+								Object bean = session.getAttribute("p20");
+								if (bean == null) {
+									bean = new 对象();
+									session.setAttribute("p20",bean);
+								}
+								return bean;
+
+    -->
+
+
+    <bean id="p22" class="com.atguigu.bean.Person" scope="singleton" >
     </bean>
 
-
+    <bean id="p23" class="com.atguigu.bean.Person" scope="prototype" >
+    </bean>
 
 </beans>

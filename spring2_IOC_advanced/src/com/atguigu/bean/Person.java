@@ -93,16 +93,16 @@ public class Person {
         this.car = car;
     }
 
-    @Override
-    public String toString() {
-        return "Person{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", car=" + car +
-                ", list=" + list +
-                ", map=" + map +
-                ", props=" + props +
-                ", set=" + set +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "Person{" +
+//                "id=" + id +
+//                ", name='" + name + '\'' +
+//                ", car=" + car +
+//                ", list=" + list +
+//                ", map=" + map +
+//                ", props=" + props +
+//                ", set=" + set +
+//                '}';
+//    }
 }

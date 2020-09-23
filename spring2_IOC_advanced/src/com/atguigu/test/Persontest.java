@@ -102,6 +102,22 @@ public class Persontest {
     @Test
     public void test21(){
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+        System.out.println(applicationContext.getBean("p21"));
+    }
+
+    @Test
+    public void test22(){
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+        System.out.println(applicationContext.getBean("p22"));
+        System.out.println(applicationContext.getBean("p22"));
+        System.out.println(applicationContext.getBean("p22"));
+
+
+        System.out.println(applicationContext.getBean("p23"));
+        System.out.println(applicationContext.getBean("p23"));
+        System.out.println(applicationContext.getBean("p23"));
+        System.out.println(applicationContext.getBean("p23"));
+
     }
 
 
