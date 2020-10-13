@@ -1,4 +1,4 @@
-package com.atguigu.service;
+package atguigu.service;
 
 import com.atguigu.dao.BookDao;
 import org.springframework.beans.factory.annotation.Autowired;
