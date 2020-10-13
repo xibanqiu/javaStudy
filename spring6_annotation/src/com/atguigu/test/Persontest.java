@@ -12,12 +12,12 @@ public class Persontest {
 
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
 
-        System.out.println(applicationContext.getBean("bookDao"));
-        System.out.println(applicationContext.getBean("bookDao"));
-        System.out.println(applicationContext.getBean("bookDao"));
-        System.out.println(applicationContext.getBean("book"));
+//        System.out.println(applicationContext.getBean("bookDao"));
+//        System.out.println(applicationContext.getBean("bookDao"));
+//        System.out.println(applicationContext.getBean("bookDao"));
+//        System.out.println(applicationContext.getBean("book"));
         System.out.println(applicationContext.getBean("bookService"));
-        System.out.println(applicationContext.getBean("bookController"));
+//        System.out.println(applicationContext.getBean("bookController"));
 
     }
 
