@@ -1,5 +1,6 @@
 package com.atguigu.service;
 
+import com.atguigu.bean.Book;
 import com.atguigu.dao.BookDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -39,6 +40,12 @@ public class BookService {
     public void setBookDao(@Qualifier("bookDaoExt") BookDao aa){
 
         System.out.println("bookDao 进来了 啦  ---》 "  + aa);
+
+    }
+
+    public void save(Book book){
+
+        System.out.println(book);
 
     }
 
