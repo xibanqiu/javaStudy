@@ -1,4 +1,4 @@
-package atguigu.dao;
+package com.atguigu.dao;
 
 import org.springframework.stereotype.Repository;
 

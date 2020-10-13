@@ -1,4 +1,4 @@
-package atguigu.service;
+package com.atguigu.service;
 
 import com.atguigu.dao.BookDao;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 /**
  * @Service 注解表示
- *      <bean id ="bookService" class=" com.atguigu.service.BookService"></>
+ *      <bean id ="bookService" class=" com.com.atguigu.service.BookService"></>
  */
 @Service
 public class BookService {

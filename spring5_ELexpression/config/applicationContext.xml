@@ -10,21 +10,21 @@
        http://www.springframework.org/schema/util/spring-util-4.0.xsd">
 
 
-    <bean id="car" class="com.atguigu.bean.Car" >
+    <bean id="car" class="com.com.atguigu.bean.Car" >
         <property name="carNo" value="京B123412" />
         <property name="name" value="蓝脖鸡泥" />
     </bean>
 
     <!-- 实验26：[SpEL测试I]在SpEL中使用字面量 -->
     <!-- 使用格式：#{数值} 		#{“字符串” || ‘字符串’} -->
-    <bean id="p1" class="com.atguigu.bean.Person">
+    <bean id="p1" class="com.com.atguigu.bean.Person">
         <property name="id" value="#{100}" />
         <property name="name" value="#{'我是SpringEL输出的字符串'}" />
     </bean>
 
     <!-- 实验27：[SpEL测试II]在SpEL中引用其他bean -->
     <!-- 使用格式：#{bean的id} -->
-    <bean id="p2" class="com.atguigu.bean.Person">
+    <bean id="p2" class="com.com.atguigu.bean.Person">
         <property name="id" value="#{100}" />
         <property name="car" value="#{car}" />
     </bean>
@@ -32,26 +32,26 @@
 
     <!-- 实验28：[SpEL测试III]在SpEL中引用其他bean的某个属性值 -->
     <!-- 使用格式： #{bean.属性名} -->
-    <bean id="p3" class="com.atguigu.bean.Person">
+    <bean id="p3" class="com.com.atguigu.bean.Person">
         <property name="name" value="#{car.name}" />
     </bean>
 
     <!-- 实验29：[SpEL测试IV]在SpEL中调用非静态方法 -->
     <!-- 使用格式： #{bean.方法名(参数)} -->
-    <bean id="p4" class="com.atguigu.bean.Person">
+    <bean id="p4" class="com.com.atguigu.bean.Person">
         <property name="name" value="#{car.fun()}" />
     </bean>
 
 
     <!-- 实验30：[SpEL测试V]在SpEL中调用静态方法 -->
     <!-- 使用格式：#{T(全名类).方法名(参数)} -->
-    <bean id="p5" class="com.atguigu.bean.Person">
-        <property name="name" value="#{T(com.atguigu.bean.Car).staticFun()}" />
+    <bean id="p5" class="com.com.atguigu.bean.Person">
+        <property name="name" value="#{T(com.com.atguigu.bean.Car).staticFun()}" />
     </bean>
 
     <!-- 实验31：[SpEL测试VI]在SpEL中使用运算符 -->
     <!-- 使用格式：#{表达式} -->
-    <bean id="p6" class="com.atguigu.bean.Person">
+    <bean id="p6" class="com.com.atguigu.bean.Person">
         <property name="id" value="#{100 * 10}" />
         <property name="name">
             <null></null>

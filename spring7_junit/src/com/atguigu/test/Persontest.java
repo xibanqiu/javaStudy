@@ -1,4 +1,4 @@
-package atguigu.test;
+package com.atguigu.test;
 
 
 import org.junit.Test;
