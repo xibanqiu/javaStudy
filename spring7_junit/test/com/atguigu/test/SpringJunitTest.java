@@ -2,7 +2,6 @@ package com.atguigu.test;
 
 
 import com.atguigu.bean.Book;
-import com.atguigu.dao.BookDao;
 import com.atguigu.service.BookService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
