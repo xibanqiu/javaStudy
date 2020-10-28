@@ -1,3 +1,5 @@
+package com.atguigu.utils;
+
 import java.util.Arrays;
 
 public class LogUtils {
