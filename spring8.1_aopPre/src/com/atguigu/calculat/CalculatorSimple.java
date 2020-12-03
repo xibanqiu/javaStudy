@@ -1,6 +1,7 @@
 package com.atguigu.calculat;
 
-public class Calculator implements Calculate {
+// Calculator simple example
+public class CalculatorSimple implements Calculate {
     @Override
     public int add(int num1, int num2) {
         int result = num1 + num2;
@@ -21,4 +22,3 @@ public class Calculator implements Calculate {
         return result;
     }
 }
-

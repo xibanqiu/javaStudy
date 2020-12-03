@@ -23,7 +23,7 @@ public class LogUtils {
 
     }
 
-    public static void logAfterReturn(String method ,Object result){
+    public static void logAfterReturning(String method ,Object result){
 
         System.out.println("异常日记是：当前是【" + method + "】操作，参数是：" + result);
 
