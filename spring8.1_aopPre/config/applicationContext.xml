@@ -14,14 +14,14 @@
             base-package	设置需要扫描的包名（它的子包也会被扫描）
             use-default-filters 取消默认的规则
      -->
-<!--   <context:component-scan base-package="com.com.atguigu" use-default-filters="false">-->
+<!--   <context:component-scan base-package="com.com.com.atguigu" use-default-filters="false">-->
 <!--       &lt;!&ndash; context:include-filter 设置包含的内容 &ndash;&gt;-->
 <!--       <context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>-->
 <!--       &lt;!&ndash; context:exclude-filter 设置排除的内容 &ndash;&gt;-->
-<!--       <context:exclude-filter type="assignable" expression="com.com.atguigu.service.BookService"/>-->
+<!--       <context:exclude-filter type="assignable" expression="com.com.com.atguigu.service.BookService"/>-->
 <!--   </context:component-scan>-->
 
-    <context:component-scan base-package="com.atguigu" />
+    <context:component-scan base-package="com.com.atguigu" />
 
 
 </beans>

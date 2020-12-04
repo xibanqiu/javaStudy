@@ -43,10 +43,10 @@ public class ProxyFactory {
 
         CalculatorSimple cc = new CalculatorSimple();
 
-        CalculatorSimple proxy = (CalculatorSimple) jdkProxy(cc);
+        Calculate proxy = (Calculate) jdkProxy(cc);
 
         System.out.println(proxy.add(1, 2));
-        System.out.println(proxy.div(100, 0));
+//        System.out.println(proxy.div(100, 0));
 
 
     }
