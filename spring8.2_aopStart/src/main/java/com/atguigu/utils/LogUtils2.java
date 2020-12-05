@@ -17,14 +17,14 @@ public class LogUtils2 {
     //	1、定义一个空的静态方法
 //	2、使用@Pointcut注解定义切入点表达式
 //	3、在需要复用切入点表达式的地方，使用方法调用代替
-    @Pointcut("execution(public int com.atguigu.calculat.Calculator.*(int,int))")
+    @Pointcut("execution(public int com.com.atguigu.pojo.atguigu.calculat.Calculator.*(int,int))")
     public static void pointcut1() {}
 
     /**
      * @Before 表示前置通知<br/>
      *         value 需要写上切入点表达式
      */
-    @Before(value = "execution(public int com.atguigu.calculat.Calculator.*(int,int))")
+    @Before(value = "execution(public int com.com.atguigu.pojo.atguigu.calculat.Calculator.*(int,int))")
     public static void logBefore(JoinPoint jp) {
         // jp.getSignature().getName() 获取方法名
         // jp.getArgs() 调用方法时的参数

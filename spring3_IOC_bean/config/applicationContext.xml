@@ -8,7 +8,7 @@
         <!--  init-method 配置初始化方法(bean 对象创建之后)
               destroy-method 配置销毁方法（在Spring 容器关闭的时候，只对单例有效）
          -->
-        <bean  class="com.com.atguigu.bean.Person" init-method="init" destroy-method="destroy" >
+        <bean  class="com.com.com.atguigu.pojo.atguigu.bean.Person" init-method="init" destroy-method="destroy" >
             <!-- ioc 创建 默认使用 无参构造 -->
 
 <!--            <property name="name" value="aaa" />-->
@@ -18,7 +18,7 @@
             <constructor-arg name="age" value="11" />
         </bean>
 
-    <bean class="com.com.atguigu.processor.MyBeanPostProcessor" />
+    <bean class="com.com.com.atguigu.pojo.atguigu.processor.MyBeanPostProcessor" />
 
 
 </beans>

@@ -13,28 +13,28 @@ import java.util.Arrays;
 public class LogUtils {
 
 
-    @Before(value = "execution(public int com.atguigu.calculat.Calculator.add(..))")
+    @Before(value = "execution(public int com.com.atguigu.pojo.atguigu.calculat.Calculator.add(..))")
     public static void logBefore(JoinPoint joinPoint){
 
         System.out.println("前置日记是：当前是【" + joinPoint.getSignature().getName() + "】操作，参数是：" + Arrays.asList(joinPoint.getArgs()));
 
     }
 
-    @After(value = "execution(* com.atguigu.calculat.*.*(..))")
+    @After(value = "execution(* com.com.atguigu.pojo.atguigu.calculat.*.*(..))")
     public static void logAfter(JoinPoint joinPoint){
 
         System.out.println("后置日记是：当前是【" +  joinPoint.getSignature().getName() + "】操作，参数是：" + Arrays.asList(joinPoint.getArgs()));
 
     }
 
-    @AfterThrowing(value = "execution(* com.atguigu.calculat.*.*(..))",throwing="e")
+    @AfterThrowing(value = "execution(* com.com.atguigu.pojo.atguigu.calculat.*.*(..))",throwing="e")
     public static void logAfterThrowing(JoinPoint joinPoint,Exception e){
 
         System.out.println("异常日记是：当前是【" + joinPoint.getSignature().getName()  + "】操作，参数是：" + e);
 
     }
 
-    @AfterReturning(value = "execution(* com.atguigu.calculat.*.*(..))", returning = "result")
+    @AfterReturning(value = "execution(* com.com.atguigu.pojo.atguigu.calculat.*.*(..))", returning = "result")
     public static void logAfterReturning(JoinPoint joinPoint ,Object result){
 
         System.out.println("异常日记是：当前是【" + joinPoint.getSignature().getName() + "】操作，参数是：" + result);
@@ -42,7 +42,7 @@ public class LogUtils {
     }
 
 
-    @Around(value = "execution(* com.atguigu.calculat.*.*(..))")
+    @Around(value = "execution(* com.com.atguigu.pojo.atguigu.calculat.*.*(..))")
     public static Object around(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
         Object result = null;
         try {

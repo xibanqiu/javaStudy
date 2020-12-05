@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 /**
  * @Service 注解表示
- *      <bean id ="bookService" class=" com.com.atguigu.service.BookService"></>
+ *      <bean id ="bookService" class=" com.com.com.atguigu.pojo.atguigu.service.BookService"></>
  */
 @Service
 public class BookService {
