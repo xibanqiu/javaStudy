@@ -16,6 +16,8 @@
     <!--  配置映射器，把bean 的name的属性作为一个Url -->
     <bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"/>
 
+    <bean name="/hello.do" class="com.atguigu.springmvc.controller.HelloController" />
+
     <!-- 配置适配器 -->
     <bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter"/>
 

@@ -1,4 +1,4 @@
-package com.atguigu.springmvc.ctroller;
+package com.atguigu.springmvc.controller;
 
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.Controller;
