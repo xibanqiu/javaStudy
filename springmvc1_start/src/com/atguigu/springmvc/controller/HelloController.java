@@ -15,7 +15,7 @@ public class HelloController implements Controller {
         ModelAndView mv = new ModelAndView();
 
         mv.setViewName("hello");
-        mv.addObject("msg","第一个spring 程序");
+        mv.addObject("msg","第一个spring 程序1");
 
         return mv;
     }
