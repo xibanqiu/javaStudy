@@ -17,6 +17,18 @@
 
     </bean>
 
+    <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver" >
+        <property name="excludedExceptions">
+            <set>
+                <props>
+                    <prop key="java.lang.ArithmeticException"> forward:/error/error1.jsp</prop>
+                    <prop key="java.lang.Exception"> forward:/error/error2.jsp</prop>
+
+                </props>
+            </set>
+        </property>
+
+    </bean>
 
 
 
