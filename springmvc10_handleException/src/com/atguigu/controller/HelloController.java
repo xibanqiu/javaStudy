@@ -12,19 +12,18 @@ public class HelloController {
 
     /**
      *
-     *
-     * @return
+     第三种、使用@HandlerException注解
      */
-    @ExceptionHandler(ArithmeticException.class) // 可加参数
-    public ModelAndView handleException(Exception e){
-
-        ModelAndView mv= new ModelAndView();
-        mv.addObject("msg","");
-        mv.setViewName("hello");
-
-        return mv;
-
-    }
+//    @ExceptionHandler(ArithmeticException.class) // 可加参数
+//    public ModelAndView handleException(Exception e){
+//
+//        ModelAndView mv= new ModelAndView();
+//        mv.addObject("msg",e.getMessage());
+//        mv.setViewName("hello");
+//
+//        return mv;
+//
+//    }
 
 
 
@@ -34,7 +33,7 @@ public class HelloController {
          int i =1/0;
 
         ModelAndView mv= new ModelAndView();
-        mv.addObject("msg","");
+        mv.addObject("msg","hello");
         mv.setViewName("hello");
 
         return mv;
